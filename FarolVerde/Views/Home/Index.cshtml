@@ -2,6 +2,25 @@
     ViewBag.Title = "Home Page";
 }
 
+<link href="~/Content/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+<link href="~/Scripts/timepicker/jquery.ui.timepicker.css" rel="stylesheet" />
+
+
+
+<script src="~/Scripts/jquery-ui-1.10.4.js"></script>
+
+
+
+<script src="~/Scripts/timepicker/include/ui-1.10.0/jquery.ui.core.min.js"></script>
+<script src="~/Scripts/timepicker/include/ui-1.10.0/jquery.ui.position.min.js"></script>
+<script src="~/Scripts/timepicker/include/ui-1.10.0/jquery.ui.tabs.min.js"></script>
+<script src="~/Scripts/timepicker/include/ui-1.10.0/jquery.ui.widget.min.js"></script>
+
+
+
+<script src="~/Scripts/timepicker/i18n/jquery.ui.timepicker-pt-BR.js"></script>
+<script src="~/Scripts/timepicker/jquery.ui.timepicker.js"></script>
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
 <script>
@@ -49,10 +68,7 @@
         $.post("./FarolVerde/GetRoute", obj, SubmitSuccess).error(SubmitError);
     }
 
-    $(function () {
-        $('input[type=text]').val('');
-        initialize();
-    });
+    
     var placeSearch, autocompleteOrigin, autocompleteDest, Route;
     var componentForm = {
         street_number: 'short_name',
@@ -129,6 +145,14 @@
     }
     // [END region_geolocation]
 
+
+    $(function () {
+        $('input[type=text]').val('');
+        initialize();
+        $('#departure-time').timepicker({});
+        $('#arrival-time').timepicker();
+
+    });
 </script>
 
 <style>
@@ -138,7 +162,7 @@
 </style>
 
 
-
+<br />
 <div>
     <label for="origin" class="block">
         Origem:
