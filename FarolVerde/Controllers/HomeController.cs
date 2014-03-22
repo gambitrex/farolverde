@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FarolVerde.Models;
+using FarolVerde.Models.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +12,8 @@ namespace FarolVerde.Controllers
     {
         public ActionResult Index()
         {
+            var ocorrencias = Ocorrencia.Get();
+
             return View();
         }
 
