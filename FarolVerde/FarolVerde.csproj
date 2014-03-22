@@ -175,6 +175,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\DTO\RouteRS.cs" />
+    <Compile Include="Models\Google\Bound.cs" />
+    <Compile Include="Models\Google\Coordinate.cs" />
+    <Compile Include="Models\Google\Step.cs" />
+    <Compile Include="Models\Google\TextValue.cs" />
+    <Compile Include="Models\Google\Leg.cs" />
+    <Compile Include="Models\Google\PointTime.cs" />
+    <Compile Include="Models\Google\Route.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IEntity.cs" />
     <Compile Include="Models\Logradouro.cs" />
