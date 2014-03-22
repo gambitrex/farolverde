@@ -3,9 +3,9 @@
     padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
-
-
+input[type=text] {
+    width: 400px;
+}
 
 /* styles for validation helpers */
 .field-validation-error {
@@ -36,6 +36,18 @@ input[type="checkbox"].input-validation-error {
     display: block;
 }
 
-.ui-timepicker-table.ui-widget-content.ui-corner-all {
-    font-size: 11px;
+.block * {
+    display: block;
+}
+
+.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all {
+    font-size: 10px;
+}
+
+#when {
+    width: 134px;
+}
+
+#time {
+    padding: 3px;
 }
