@@ -9,7 +9,7 @@ using System.Web;
 namespace FarolVerde.Models
 {
     [DataContract, Table("Ocorrencias")]
-    public class Ocorrencia : IEntity
+    public class Logradouro : IEntity
     {
         [Column("id")]
         public int Id { get; set; }
