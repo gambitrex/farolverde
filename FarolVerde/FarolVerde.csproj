@@ -185,6 +185,19 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Data\Data\Acidentes\2011-2012_acidentes.csv" />
+    <Content Include="App_Data\Data\Acidentes\2011-2012_veiculos.csv" />
+    <Content Include="App_Data\Data\Acidentes\2011-2012_vitimas.csv" />
+    <Content Include="App_Data\Data\Acidentes\2013_acidentes-1o_Semestre.csv" />
+    <Content Include="App_Data\Data\Acidentes\2013_veiculos-1o_Semestre.csv" />
+    <Content Include="App_Data\Data\Acidentes\2013_vitimas-1o_Semestre.csv" />
+    <Content Include="App_Data\Data\Acidentes\logradouros.csv" />
+    <Content Include="App_Data\Data\Acidentes\SAT-Contexto.pdf" />
+    <Content Include="App_Data\Data\Acidentes\SAT-DicionarioDados.pdf" />
+    <Content Include="App_Data\Data\Ocorrecias\Codigo_Ocorrencia.csv" />
+    <Content Include="App_Data\Data\Ocorrecias\Ocorrencias-DicionarioDados.pdf" />
+    <Content Include="App_Data\Data\Ocorrecias\Ocorrencias.csv" />
+    <Content Include="App_Data\Data\Ocorrecias\OcorrΩncias-Contexto.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -223,9 +236,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
