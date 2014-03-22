@@ -21,6 +21,10 @@ namespace FarolVerde.Models.DataBase
         }
 
         public DbSet<Ocorrencia> Ocorrencias { get; set; }
+        public DbSet<Logradouro> Logradouros { get; set; }
+        public DbSet<Acidente> Acidentes { get; set; }
+        public DbSet<Veiculo> Veiculos { get; set; }
+        public DbSet<Vitima> Vitimas { get; set; }
 
         protected override void Dispose(bool disposing)
         {
