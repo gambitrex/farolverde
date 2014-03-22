@@ -13,10 +13,6 @@ namespace FarolVerde.Controllers
     {
         public ActionResult Index()
         {
-            var x1 = Veiculo.Get();
-
-            var x2 = Vitima.Get();
-
             return View();
         }
 
@@ -36,7 +32,7 @@ namespace FarolVerde.Controllers
 
         public JsonResult GetRoute(RouteRQ rq)
         {
-            return Json(new RouteRS());
+            return Json(new RouteRS(), JsonRequestBehavior.AllowGet);
         }
     }
 }
