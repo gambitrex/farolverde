@@ -5,18 +5,7 @@
 <link href="~/Content/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
 <link href="~/Scripts/timepicker/jquery.ui.timepicker.css" rel="stylesheet" />
 
-
-
 <script src="~/Scripts/jquery-ui-1.10.4.js"></script>
-
-
-
-<script src="~/Scripts/timepicker/include/ui-1.10.0/jquery.ui.core.min.js"></script>
-<script src="~/Scripts/timepicker/include/ui-1.10.0/jquery.ui.position.min.js"></script>
-<script src="~/Scripts/timepicker/include/ui-1.10.0/jquery.ui.tabs.min.js"></script>
-<script src="~/Scripts/timepicker/include/ui-1.10.0/jquery.ui.widget.min.js"></script>
-
-
 
 <script src="~/Scripts/timepicker/i18n/jquery.ui.timepicker-pt-BR.js"></script>
 <script src="~/Scripts/timepicker/jquery.ui.timepicker.js"></script>
@@ -43,8 +32,6 @@
         var Dlong = place.geometry.location.A;
         var Dlat = place.geometry.location.k;
 
-
-
         var origin = $('#origin').val();
         var destination = $('#origin').val();
         var departure_time = $('#departure-time').val();
@@ -65,6 +52,7 @@
             DepartureTime: departure_time,
             ArrivalTime: arrival_time
         };
+
         $.post("./FarolVerde/GetRoute", obj, SubmitSuccess).error(SubmitError);
     }
 
@@ -145,7 +133,6 @@
     }
     // [END region_geolocation]
 
-
     $(function () {
         $('input[type=text]').val('');
         initialize();
@@ -161,8 +148,6 @@
     }
 </style>
 
-
-<br />
 <div>
     <label for="origin" class="block">
         Origem:
