@@ -12,7 +12,7 @@ namespace FarolVerde.Controllers
     {
         public ActionResult Index()
         {
-            var ocorrencias = Ocorrencia.Get();
+            //var ocorrencias = Ocorrencia.Get();
 
             return View();
         }

@@ -2,21 +2,163 @@
     ViewBag.Title = "Home Page";
 }
 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
+<script>
+
+    function SubmitSuccess(data, textStatus, jqXHR) {
+        console.log('Success!');
+        console.log(data);
+    }
+
+    function SubmitError(data, textStatus, jqXHR) {
+        console.log('Error!');
+        console.log(data);
+    }
+
+    function Submit() {
+        var place = autocompleteOrigin.getPlace();
+        var Olong = place.geometry.location.A;
+        var Olat = place.geometry.location.k;
+        place = autocompleteDest.getPlace();
+        var Dlong = place.geometry.location.A;
+        var Dlat = place.geometry.location.k;
+
+
+
+        var origin = $('#origin').val();
+        var destination = $('#origin').val();
+        var departure_time = $('#departure-time').val();
+        var arrival_time = $('#arrival-time').val();
+        var obj = {
+            Origin:
+            {
+                Name: origin,
+                Lat: Olat,
+                Long: Olong,
+            },
+            Destination:
+            {
+                Name: destination,
+                Lat: Dlat,
+                Long: Dlong,
+            },
+            DepartureTime: departure_time,
+            ArrivalTime: arrival_time
+        };
+        $.post("./FarolVerde/GetRoute", obj, SubmitSuccess).error(SubmitError);
+    }
+
+    $(function () {
+        $('input[type=text]').val('');
+        initialize();
+    });
+    var placeSearch, autocompleteOrigin, autocompleteDest, Route;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initialize() {
+        // Create the autocomplete object, restricting the search
+        // to geographical location types.
+        autocompleteOrigin = new google.maps.places.Autocomplete(
+            (document.getElementById('origin')),
+            { types: ['geocode'] });
+
+        autocompleteDest = new google.maps.places.Autocomplete(
+          (document.getElementById('destination')),
+          { types: ['geocode'] });
+        // When the user selects an address from the dropdown,
+        // populate the address fields in the form.
+        google.maps.event.addListener(autocompleteOrigin, 'place_changed', function () {
+            fillLatLong('origin');
+        });
+
+        google.maps.event.addListener(autocompleteDest, 'place_changed', function () {
+            fillLatLong('destination');
+        });
+    }
+
+    // [START region_fillform]
+    function fillLatLong(source) {
+        // Get the place details from the autocomplete object.
+        var input, place;
+        if (source == 'origin') {
+            place = autocompleteOrigin.getPlace();
+            input = $("#divGeoOrigin")
+        } else {
+            place = autocompleteDest.getPlace();
+            input = $("#divGeoDest")
+        }
+
+        console.log(source + ' result');
+        console.log(place);
+        var long = place.geometry.location.A;
+        var lat = place.geometry.location.k;
+        input.html('Result: ' + lat + ',' + long)
+
+
+    }
+
+    // [START region_fillform]
+    function fillLatLongDest() {
+        // Get the place details from the autocomplete object.
+        var place = autocompleteDest.getPlace();
+        console.log('Origin result');
+        console.log(autocompleteDest.getPlace());
+
+    }
+    // [END region_fillform]
+
+    // [START region_geolocation]
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                autocompleteOrigin.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
+                autocompleteDest.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
+            });
+        }
+    }
+    // [END region_geolocation]
+
+</script>
+
+<style>
+    input[type=text] {
+        width: 500px;
+    }
+</style>
+
+
+
 <div>
-    <label class="block">
+    <label for="origin" class="block">
         Origem:
-        <input id="origin" type="text" />
     </label>
-    <label class="block">
+    <input id="origin" type="text" placeholder="Enter your address" onfocus="geolocate()" /><div id="divGeoOrigin"></div>
+
+    <label for="destination" class="block">
         Destino:
-        <input id="destination" type="text" />
     </label>
-    <label class="block">
+    <input id="destination" type="text" placeholder="Enter your destination" /><div id="divGeoDest"></div>
+
+    <label for="departure-time" class="block">
         Hora de Saída:
-        <input id="departure-time" type="text" />
     </label>
-    <label class="block">
+    <input id="departure-time" type="text" />
+
+    <label for="arrival-time" class="block">
         Hora de Chegada:
-        <input id="arrival-time" type="text" />
     </label>
+    <input id="arrival-time" type="text" />
+    <button type="button" onclick="Submit()">Go baby!</button>
+
 </div>
