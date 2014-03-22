@@ -13,9 +13,10 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
 <script>
-
+    var _result;
     function SubmitSuccess(data, textStatus, jqXHR) {
         console.log('Success!');
+        _result = data;
         console.log(data);
     }
 
@@ -29,13 +30,29 @@
         var Olong = place.geometry.location.A;
         var Olat = place.geometry.location.k;
         place = autocompleteDest.getPlace();
+        var now = new Date();
         var Dlong = place.geometry.location.A;
         var Dlat = place.geometry.location.k;
 
         var origin = $('#origin').val();
-        var destination = $('#origin').val();
-        var departure_time = $('#departure-time').val();
-        var arrival_time = $('#arrival-time').val();
+        var destination = $('#destination').val();
+
+
+        var dep_hour = $('#departure-time').timepicker('getHour');
+        var dep_minute = $('#departure-time').timepicker('getMinute')
+        var arr_hour = $('#arrival-time').timepicker('getHour');
+        var arr_minute = $('#arrival-time').timepicker('getMinute');
+
+        now.setHours(dep_hour + 1);
+        now.setMinutes(dep_minute);
+        var departure_time = now.getTime();
+
+        now.setHours(arr_hour + 1);
+        now.setMinutes(arr_minute);
+        var arrival_time = now.getTime();
+
+
+
         var obj = {
             Origin:
             {
@@ -52,8 +69,15 @@
             DepartureTime: departure_time,
             ArrivalTime: arrival_time
         };
-
-        $.post("./FarolVerde/GetRoute", obj, SubmitSuccess).error(SubmitError);
+        $.ajax({
+            url: './GetRoute',
+            type: 'POST',
+            dataType: 'json',
+            data: JSON.stringify(obj),
+            contentType: 'application/json; charset=utf-8',
+            success: SubmitSuccess,
+            error: SubmitError
+        });
     }
 
     
