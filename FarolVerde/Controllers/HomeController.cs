@@ -1,5 +1,6 @@
 ﻿using FarolVerde.Models;
 using FarolVerde.Models.DataBase;
+using FarolVerde.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,9 @@ namespace FarolVerde.Controllers
     {
         public ActionResult Index()
         {
-            var ocorrencias = Ocorrencia.Get();
+            var x1 = Veiculo.Get();
+
+            var x2 = Vitima.Get();
 
             return View();
         }
@@ -29,6 +32,11 @@ namespace FarolVerde.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public JsonResult GetRoute(RouteRQ rq)
+        {
+            return Json(new RouteRS());
         }
     }
 }

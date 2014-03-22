@@ -167,13 +167,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Acidente.cs" />
     <Compile Include="Models\DataBase\Context.cs" />
     <Compile Include="Models\DataBase\DBManager.cs" />
+    <Compile Include="Models\DTO\Point.cs" />
+    <Compile Include="Models\DTO\RouteRS.cs" />
+    <Compile Include="Models\DTO\RouteRQ.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IEntity.cs" />
     <Compile Include="Models\Logradouro.cs" />
     <Compile Include="Models\Ocorrencia.cs" />
     <Compile Include="Models\ToContextAttribute.cs" />
+    <Compile Include="Models\Veiculo.cs" />
+    <Compile Include="Models\Vitima.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

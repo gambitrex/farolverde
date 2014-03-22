@@ -8,7 +8,7 @@ using System.Web;
 
 namespace FarolVerde.Models
 {
-    [DataContract, Table("Ocorrencias")]
+    [DataContract, Table("logradouros")]
     public class Logradouro : IEntity
     {
         [Column("id")]
@@ -17,45 +17,29 @@ namespace FarolVerde.Models
         [Column("active")]
         public bool Active { get; set; }
 
-        [Column("Ocorrência")]
-        public string Ocorrencias { get; set; }
+        [Column("codlog")]
+        public string CodLog { get; set; }
 
-        [Column("Código")]
-        public string Codigo { get; set; }
+        [Column("tipo")]
+        public string Tipo { get; set; }
 
-        [Column("Local da Ocorrência")]
-        public string LocalOcorrencia { get; set; }
+        [Column("titulo")]
+        public string Titulo { get; set; }
 
-        [Column("Altura Numérica")]
-        public string AlturaNumerica { get; set; }
+        [Column("preposicao")]
+        public string Preposicao { get; set; }
 
-        public string Sentido { get; set; }
+        [Column("nome")]
+        public string Nome { get; set; }
 
-        public string Pista { get; set; }
+        [Column("cep")]
+        public string Cep { get; set; }
 
-        [Column("Faixa Ocupação")]
-        public string FaixaOcupacao { get; set; }
-
-        [Column("Total de Faixas")]
-        public string TotalFaixas { get; set; }
-
-        [Column("Data Hora (Chegada)")]
-        public DateTime DataHoraChegada { get; set; }
-
-        [Column("Data Hora (Chegada Man )")]
-        public DateTime DataHoraChegadaMan { get; set; }
-
-        [Column("Data Hora (Rem Sol)")]
-        public DateTime DataHoraRemSol { get; set; }
-
-        [Column("Data Hora (Rem Sol Ma)")]
-        public DateTime DataHoraRemSolMa { get; set; }
-
-        public static List<Ocorrencia> Get()
+        public static List<Logradouro> Get()
         {
             using (Context context = new Context())
             {
-                return (from e in context.Ocorrencias select e).ToList();
+                return (from e in context.Logradouros select e).ToList();
             }
         }
     }
