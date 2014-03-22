@@ -14,6 +14,12 @@ namespace FarolVerde.Models.DataBase
             Configuration.LazyLoadingEnabled = false;
         }
 
+        public Context() : base("FarolVerde")
+        {
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
+        }
+
         public DbSet<Ocorrencia> Ocorrencias { get; set; }
 
         protected override void Dispose(bool disposing)
