@@ -21,10 +21,11 @@
 <script src="~/Scripts/timepicker/i18n/jquery.ui.timepicker-pt-BR.js"></script>
 <script src="~/Scripts/timepicker/jquery.ui.timepicker.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&language=pt-BR"></script>
 
 <script>
     var _result;
+    var TRANSIT = 1, BICYCLING = 2, CAR = 3;
     function SubmitSuccess(data, textStatus, jqXHR) {
         console.log('Success!');
         _result = data;
@@ -78,8 +79,10 @@
                 Long: Dlong,
             },
             DepartureTime: departure_time,
-            ArrivalTime: arrival_time
+            ArrivalTime: arrival_time,
+            RouteType: TRANSIT
         };
+
         $.ajax({
             url: './GetRoute',
             type: 'POST',
@@ -170,7 +173,7 @@
 
 
     $(function () {
-        $('input[type=text]').val('');
+        //$('input[type=text]').val('');
         initialize();
         $('#departure-time').timepicker({});
         $('#arrival-time').timepicker();

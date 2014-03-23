@@ -14,6 +14,7 @@ namespace FarolVerde.Controllers
 {
     public class HomeController : Controller
     {
+        private string GMapsAPIAddressPrefix = "http://maps.googleapis.com/maps/api/directions/json?sensor=false&region=br&language=pt-BR";
         public ActionResult Index()
         {
             return View();
@@ -35,16 +36,25 @@ namespace FarolVerde.Controllers
 
         public JsonResult GetRoute(RouteRQ rq)
         {
-            string response = "";
-            string url = "http://maps.googleapis.com/maps/api/directions/json?sensor=false&region=br&origin=";
-            url += rq.Origin.Name + "&destination=" + rq.Destination.Name + "&mode=transit&arrival_time=1343605500"; // +rq.ArrivalTime;
+            string responseGMaps = "";
+            string url = GMapsAPIAddressPrefix + "&origin=" + rq.Origin.Name + "&destination=" + rq.Destination.Name;
             //var url = "http://maps.googleapis.com/maps/api/directions/json?origin=Rua%20Dom%20Manuel%20D%27elboux,%20S%C3%A3o%20Paulo&destination=Rua%20Os%C3%ADris%20Magalhaes%20de%20Almeida,%20S%C3%A3o%20Paulo&sensor=false&region=br&mode=transit&arrival_time=1343605500";
 
 
-            /*switch (switch_on)
+            switch (rq.RouteType)
             {
+                case RouteType.Transit:
+                    url += "&mode=transit&arrival_time=1343605500"; // +rq.ArrivalTime;
+                    break;
+                case RouteType.Bicycling:
+                    url += "&mode=bicycling";
+                    break;
+                case RouteType.Car:
+                    url += "&mode=bicycling";
+                    break;
                 default:
-            }*/
+                    break;
+            }
 
 
             try
@@ -52,7 +62,7 @@ namespace FarolVerde.Controllers
                 WebClient webClient = new WebClient();
                 Stream stream = webClient.OpenRead(url);
                 StreamReader reader = new StreamReader(stream);
-                response = reader.ReadToEnd();
+                responseGMaps = reader.ReadToEnd();
             }
             catch (WebException ex)
             {
@@ -71,16 +81,16 @@ namespace FarolVerde.Controllers
                 }
             }
 
+            
 
-            dynamic obj = JsonConvert.DeserializeObject(response);
+            dynamic obj = JsonConvert.DeserializeObject(responseGMaps);
+            var response = Engine.Process(rq.RouteType, obj);
 
             /*if (obj.status != null)
             {
                 // tratar erro
                 return null;
             }*/
-
-
 
             return Json(response, JsonRequestBehavior.AllowGet);
         }

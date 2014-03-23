@@ -11,11 +11,17 @@ namespace FarolVerde.Models.DTO
     {
         [DataMember]
         public Point Origin { get; set; }
+
         [DataMember]
         public Point Destination { get; set; }
+
         [DataMember]
         public string DepartureTime { get; set; }
+
         [DataMember]
         public string ArrivalTime { get; set; }
+
+        [DataMember]
+        public RouteType RouteType { get; set; }
     }
 }
