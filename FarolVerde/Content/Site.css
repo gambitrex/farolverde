@@ -1,37 +1,44 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
-
-
-
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
+.header {
+    height: 55px;
+    background-color: green;
 }
 
-.field-validation-valid {
-    display: none;
-}
-
-input.input-validation-error {
-    border: 1px solid #b94a48;
-}
-
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
-}
-
-.validation-summary-errors {
-    color: #b94a48;
-}
-
-.validation-summary-valid {
-    display: none;
+input[type=text] {
+    width: 400px;
 }
 
 .block {
     display: block;
+}
+
+.block * {
+    display: block;
+}
+
+.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all {
+    font-size: 10px;
+}
+
+#when {
+    width: 81px;
+}
+
+#destination {
+    margin-bottom: 15px;
+}
+
+#fuel-value {
+    width: 100px;
+}
+
+select {
+    padding: 3px;
+}
+
+.fb_iframe_widget {
+    float: right;
+    padding: 10px;
 }

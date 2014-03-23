@@ -20,6 +20,10 @@ namespace FarolVerde.Models.DTO
 
         [DataMember]
         public string ArrivalTime { get; set; }
+        [DataMember]
+        public Vehicle Vehicle { get; set; }
+        [DataMember]
+        public User User { get; set; }
 
         [DataMember]
         public RouteType RouteType { get; set; }

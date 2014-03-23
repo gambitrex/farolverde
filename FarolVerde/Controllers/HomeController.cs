@@ -95,9 +95,9 @@ namespace FarolVerde.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
-
-
-
-
+        public JsonResult ProcessUser(ProcessUserRQ rq)
+        {
+            return Json(new ProcessUserRS(), JsonRequestBehavior.AllowGet);
+        }
     }
 }
