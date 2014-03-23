@@ -9,10 +9,10 @@ using System.Web;
 namespace FarolVerde.Models
 {
     [DataContract, Table("vitimas")]
-    public class Vitima
+    public class Vitima : IEntity
     {
-        public int id { get; set; }
-	    public bool active { get; set; }
+        public int Id { get; set; }
+	    public bool Active { get; set; }
 	    public string id_acidente { get; set; }
 	    public string id_vitima { get; set; }
 	    public string id_veiculo { get; set; }

@@ -1,35 +1,13 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+}
+
+.header {
+    height: 55px;
+    background-color: green;
 }
 
 input[type=text] {
     width: 400px;
-}
-
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
-}
-
-.field-validation-valid {
-    display: none;
-}
-
-input.input-validation-error {
-    border: 1px solid #b94a48;
-}
-
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
-}
-
-.validation-summary-errors {
-    color: #b94a48;
-}
-
-.validation-summary-valid {
-    display: none;
 }
 
 .block {
@@ -45,9 +23,22 @@ input[type="checkbox"].input-validation-error {
 }
 
 #when {
-    width: 134px;
+    width: 81px;
 }
 
-#time {
+#destination {
+    margin-bottom: 15px;
+}
+
+#fuel-value {
+    width: 100px;
+}
+
+select {
     padding: 3px;
+}
+
+.fb_iframe_widget {
+    float: right;
+    padding: 10px;
 }

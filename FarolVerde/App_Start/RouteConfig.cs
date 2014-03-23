@@ -14,6 +14,12 @@ namespace FarolVerde
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ProcessUser",
+                url: "ProcessUser/{id}",
+                defaults: new { controller = "Home", action = "ProcessUser", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "GetRoute",
                 url: "GetRoute/{id}",
                 defaults: new { controller = "Home", action = "GetRoute", id = UrlParameter.Optional }

@@ -4,6 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Farol Verde</title>
+    <script type="text/javascript">
+        Global = { Response: {} };
+
+        Global.SiteRootUrl = '@Url.Content("~/Content/Images/")';
+        Global.SiteRootPath = '@Url.Content("~/")';
+    </script>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -11,25 +18,8 @@
     @Scripts.Render("~/bundles/base")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Farol Verde", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
+    <div class="header">
+        <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
     </div>
     <div class="container body-content">
         @RenderBody()
@@ -38,8 +28,6 @@
             <p>&copy; @DateTime.Now.Year - Farol Verde</p>
         </footer>
     </div>
-
-    
     @RenderSection("scripts", required: false)
 </body>
 </html>

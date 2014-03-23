@@ -25,6 +25,8 @@ namespace FarolVerde.Models.DataBase
         public DbSet<Acidente> Acidentes { get; set; }
         public DbSet<Veiculo> Veiculos { get; set; }
         public DbSet<Vitima> Vitimas { get; set; }
+        public DbSet<Stop> Stops { get; set; }
+        public DbSet<Trip> Trips { get; set; }
 
         protected override void Dispose(bool disposing)
         {
@@ -34,15 +36,15 @@ namespace FarolVerde.Models.DataBase
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<DTO.Company>().
-            //  HasMany(c => c.Autorizations).
-            //  WithMany(a => a.Companies).
+            //modelBuilder.Entity<Trip>().
+            //  HasMany(t => t.Stops).
+            //  WithMany(s => s.Trips).
             //  Map(
             //   m =>
             //   {
-            //       m.ToTable("Companies_Autorizations");
-            //       m.MapLeftKey("CompanyId");
-            //       m.MapRightKey("AutorizationId");
+            //       m.ToTable("stop_times");
+            //       m.MapLeftKey("trip_id");
+            //       m.MapRightKey("stop_id");
             //   });
         }
     }

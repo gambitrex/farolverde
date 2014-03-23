@@ -22,7 +22,8 @@ namespace FarolVerde
 
             bundles.Add(new ScriptBundle("~/bundles/base").Include(
                       "~/Scripts/jquery-ui-1.10.4.js",
-                      "~/Scripts/jquery.ui.datepicker-pt-br.js"));
+                      "~/Scripts/jquery.ui.datepicker-pt-br.js",
+                      "~/Scripts/index.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
